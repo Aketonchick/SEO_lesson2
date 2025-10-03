@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мир чая - всё о чайной культуре</title>
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f5f0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Шапка */
+        header {
+            background-color: #2c5e1a;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #d4e6b5;
+        }
+        
+        /* Герой-секция */
+        .hero {
+            background: linear-gradient(135deg, #4a7c2a 0%, #2c5e1a 100%);
+            color: white;
+            text-align: center;
+            padding: 180px 0 120px;
+            margin-top: 80px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #d4e6b5;
+            color: #2c5e1a;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid #d4e6b5;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: #d4e6b5;
+        }
+        
+        /* Основной контент */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #2c5e1a;
+            font-size: 36px;
+        }
+        
+        /* О чае */
+        .about-tea {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 400px;
+            background: linear-gradient(45deg, #8fb77b, #4a7c2a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        /* Виды чая */
+        .tea-types {
+            background-color: #f1e8dd;
+        }
+        
+        .tea-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .tea-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .tea-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .tea-image {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .green-tea {
+            background: linear-gradient(45deg, #8fb77b, #4a7c2a);
+        }
+        
+        .black-tea {
+            background: linear-gradient(45deg, #7a5c3c, #5c4229);
+        }
+        
+        .oolong-tea {
+            background: linear-gradient(45deg, #d4a574, #b5834f);
+        }
+        
+        .white-tea {
+            background: linear-gradient(45deg, #f5f5f5, #e0e0e0);
+            color: #333 !important;
+        }
+        
+        .tea-card-content {
+            padding: 20px;
+        }
+        
+        .tea-card h3 {
+            color: #2c5e1a;
+            margin-bottom: 10px;
+        }
+        
+        /* Заваривание */
+        .brewing-steps {
+            background-color: white;
+        }
+        
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .step-number {
+            background-color: #2c5e1a;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        /* Контакты */
+        .contact {
+            background-color: #f1e8dd;
+        }
+        
+        .contact-content {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: #2c5e1a;
+            width: 20px;
+        }
+        
+        /* Подвал */
+        footer {
+            background-color: #2c5e1a;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-icons {
+            margin: 20px 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #d4e6b5;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            header {
+                position: relative;
+            }
+            
+            .hero {
+                margin-top: 0;
+                padding: 80px 0;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-leaf"></i>
+                    Мир Чая
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#about">О чае</a></li>
+                        <li><a href="#types">Виды чая</a></li>
+                        <li><a href="#brewing">Заваривание</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Герой-секция -->
+    <section class="hero">
+        <div class="container">
+            <h1>Откройте для себя мир чая</h1>
+            <p>Погрузитесь в богатую историю, разнообразие вкусов и искусство заваривания этого древнего напитка</p>
+            <a href="#about" class="btn">Узнать больше</a>
+        </div>
+    </section>
+
+    <!-- О чае -->
+    <section id="about" class="about-tea">
+        <div class="container">
+            <h2 class="section-title">О чае</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Чай — один из самых популярных напитков в мире, уступающий только воде. Его история насчитывает тысячи лет, начиная с древнего Китая, где он использовался в качестве лекарственного средства.</p>
+                    <p>Сегодня чай культивируется во многих странах с тропическим и субтропическим климатом, а разнообразие его видов и сортов поражает воображение. От нежных белых чаев до насыщенных пуэров — каждый найдет свой идеальный вкус.</p>
+                    <p>Чай не только вкусен, но и полезен для здоровья. Он содержит антиоксиданты, которые помогают бороться со свободными радикалами, и может способствовать улучшению работы сердечно-сосудистой системы.</p>
+                </div>
+                <div class="about-image">
+                    Чайные плантации
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Виды чая -->
+    <section id="types" class="tea-types">
+        <div class="container">
+            <h2 class="section-title">Виды чая</h2>
+            <div class="tea-grid">
+                <div class="tea-card">
+                    <div class="tea-image green-tea">
+                        Зеленый чай
+                    </div>
+                    <div class="tea-card-content">
+                        <h3>Зеленый чай</h3>
+                        <p>Минимально окисленный чай, сохраняющий натуральные антиоксиданты. Имеет свежий, травянистый вкус и светло-зеленый цвет.</p>
+                    </div>
+                </div>
+                <div class="tea-card">
+                    <div class="tea-image black-tea">
+                        Черный чай
+                    </div>
+                    <div class="tea-card-content">
+                        <h3>Черный чай</h3>
+                        <p>Полностью окисленный чай с насыщенным вкусом и темным настоем. Самый популярный вид чая в западных странах.</p>
+                    </div>
+                </div>
+                <div class="tea-card">
+                    <div class="tea-image oolong-tea">
+                        Улун
+                    </div>
+                    <div class="tea-card-content">
+                        <h3>Улун</h3>
+                        <p>Полуокисленный чай, занимающий промежуточное положение между зеленым и черным. Обладает сложным ароматом и вкусом.</p>
+                    </div>
+                </div>
+                <div class="tea-card">
+                    <div class="tea-image white-tea">
+                        Белый чай
+                    </div>
+                    <div class="tea-card-content">
+                        <h3>Белый чай</h3>
+                        <p>Самый нежный чай, подвергающийся минимальной обработке. Имеет тонкий, сладковатый вкус и светлый настой.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Заваривание -->
+    <section id="brewing" class="brewing-steps">
+        <div class="container">
+            <h2 class="section-title">Искусство заваривания</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Выбор воды</h3>
+                    <p>Используйте свежую, фильтрованную воду. Качество воды сильно влияет на вкус чая.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Температура</h3>
+                    <p>Разные чаи требуют разной температуры воды. Зеленый чай - 70-80°C, черный - 95-100°C.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Время заваривания</h3>
+                    <p>Следуйте рекомендациям для каждого вида чая. Обычно от 1 до 5 минут.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Наслаждение</h3>
+                    <p>Пейте чай медленно, наслаждаясь ароматом и вкусом. Чай - это не просто напиток, это ритуал.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Свяжитесь с нами</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Имя</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Сообщение</label>
+                            <textarea id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Отправить</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Москва, ул. Чайная, 15</p>
+                    <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> info@tea-world.ru</p>
+                    <p><i class="fas fa-clock"></i> Пн-Пт: 9:00-20:00, Сб-Вс: 10:00-18:00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <i class="fas fa-leaf"></i>
+                    Мир Чая
+                </div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p>&copy; 2023 Мир Чая. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Плавная прокрутка для якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
